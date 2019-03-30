@@ -1,0 +1,354 @@
+@font-face {
+  font-family: arcade;
+  src: url(../fonts/arcade.TTF);
+}
+
+@font-face {
+  font-family: joystick;
+  src: url(../fonts/joystick.TTF);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: arcade;
+}
+
+/*################## Landing Page #################*/
+#landing {
+  background: black;
+}
+
+.welcome {
+  color: white;
+  position: absolute;
+  font-size: 70pt;
+  left: 10vw;
+  top: 10vh;
+}
+
+#coin {
+  color: white;
+  position: absolute;
+  font-size: 40pt;
+  top: 35vh;
+  left: 30vw;
+}
+
+#coin-count {
+  color: white;
+  position: absolute;
+  font-size: 40pt;
+  top: 45vh;
+  left: 47vw;
+}
+
+#add {
+  color: white;
+  background: none;
+  font-size: 35pt;
+  padding: 20px 20px 5px 20px;
+  border: outset 5px;
+  border-radius: 20px;
+  position: absolute;
+  top: 60vh;
+  left: 42vw;
+}
+
+#add:hover, #start:hover {
+  color: black;
+  background: white;
+  transform: scale(1.1);
+}
+
+#start {
+  color: white;
+  position: absolute;
+  text-decoration: none;
+  padding: 20px 40px 0 40px;
+  border: outset 5px;
+  border-radius: 20px;
+  font-size: 60pt;
+  top: 70vh;
+  left: 16vw;
+  display: none;
+  animation: fade 2s ease-in-out;
+}
+
+/*################## Landing Page #################*/
+/*################## Main Page #################*/
+#main-back {
+  background: url(../images/arcade.jpg);
+  background-size: cover;
+}
+
+#containerG {
+  text-align: center;
+  width: 90vw;
+  height: 90vh;
+  background: rgba(0, 0, 0, 0.5);
+  border: solid rgb(20, 30, 120) 10px;
+  border-radius: 50px;
+  margin: 5vh 5vw 5vh 5vw;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 25% 75%;
+  grid-template-areas:
+    "title"
+    "names"
+}
+
+.the-games {
+  font-size: 33pt;
+  font-family:joystick;
+  color: white;
+  flex: 1;
+  width: 100%;
+}
+
+.the-games:hover {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+#titleG {
+  font-family:joystick;
+  grid-area: title;
+  text-align: center;
+  color: white;
+  font-size: 35pt;
+  padding: 7vh 0 0 0;
+  border-bottom:solid rgb(20, 30, 120) 10px;
+}
+
+#namesG {
+  grid-area: names;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.highlight{
+  background: rgba(0, 0, 0, 0.5);
+}
+a{
+  text-decoration: none;
+}
+
+/*################## Main Page #################*/
+/*################## BlackJack Page #################*/
+#bj {
+  background: url(../images/ace.jpg);
+  background-size: cover;
+}
+
+#bjDiv {
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 35vh 30vh 35vh;
+  grid-template-areas:
+    "dealer"
+    "display"
+    "player"
+}
+
+#dealer {
+  grid-area: dealer;
+  display: flex
+}
+
+#money {
+  flex: 3;
+  color: white;
+  text-align: center;
+  font-size: 60pt;
+  padding-top: 10vh;
+  font-family: joystick;
+}
+
+#display {
+  grid-area: display;
+  background: rgba(0, 0, 0, .5);
+  display: flex;
+}
+
+#displayB, #displayW {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.on-display {
+  flex: 1;
+  color: white;
+  font-size: 50pt;
+  text-align: center;
+  padding-top: 5%;
+}
+
+#player {
+  grid-area: player;
+  display: flex;
+}
+
+.my-card, .cpu-card {
+  height: 35vh;
+  flex: 1;
+}
+
+#my-bets {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+}
+
+.choices-style {
+  flex: 1;
+  font-family: joystick;
+  color: white;
+  font-size: 15pt;
+  background: rgba(0, 0, 0, .8);
+  height: 100%;
+  width: 100%;
+}
+
+.choice-contain {
+  display: flex;
+  flex: 1;
+}
+
+#stand, #hit {
+  display: none;
+}
+
+/*################## BlackJack Page #################*/
+/*#######################Smash'em Page###############*/
+#smashBack {
+  background: url(../images/backSmash.jpg);
+  background-size: cover;
+}
+
+.exit {
+  font-family: joystick;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  border: solid;
+  border-radius: 10px;
+  position: absolute;
+  top: 2vh;
+  left: 1vw;
+  z-index: 10;
+}
+
+.smashKey {
+  height: 50px;
+  width: 50px;
+  font-size: 50pt;
+  text-align: center;
+  position: absolute;
+  z-index: 2;
+  transition: top 2s, left 2s;
+  animation: spin 2s ease-in-out infinite;
+  border: solid;
+  border-radius: 4% 95% 6% 95%/95% 4% 92% 5%;
+}
+
+#instructions {
+  background: rgba(0, 0, 0, .8);
+  height: 90vh;
+  width: 90vw;
+  top: 5vh;
+  left: 5vw;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+}
+
+.instrStyle {
+  font-family: joystick;
+  flex: 1;
+  font-size: 50pt;
+  color: white;
+  padding-top: 5vh;
+}
+
+.rules {
+  flex: 4;
+  list-style: none;
+  font-size: 35pt;
+}
+
+li {
+  margin-top: 10px;
+  color: white;
+}
+
+.closeInstr {
+  font-family: joystick;
+  font-size: 50pt;
+  margin-top: 5vh;
+  padding: 20px;
+  border: outset black 5px;
+  border-radius: 20px;
+}
+
+.closeInstr:hover {
+  color: white;
+  background: black;
+  box-shadow: 8px 8px grey;
+}
+
+#scoreBoard {
+  height: 20vh;
+  width: 60vw;
+  background: rgba(0, 0, 0, .3);
+  position: absolute;
+  top: 40vh;
+  left: 20vw;
+  text-align: center;
+  padding-top: 5vh;
+  font-size: 70pt;
+  font-family: joystick;
+}
+
+/*#######################Smash'em Page###############*/
+/*keyframe animations################################*/
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

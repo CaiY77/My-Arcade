@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="icon" href="../images/logo.jpg" type="image/gif">
+
+  <meta charset="utf-8">
+  <title>Black Jack</title>
+</head>
+
+<body id="bj">
+  <main id="bjDiv">
+    <div id="dealer">
+      <img src="../images/deck/blue_back.png" class="cpu-card">
+      <img src="../images/deck/blue_back.png" class="cpu-card">
+      <img src="../images/deck/blue_back.png" class="cpu-card">
+      <img src="../images/deck/blue_back.png" class="cpu-card">
+      <img src="../images/deck/blue_back.png" class="cpu-card">
+      <div id="money">$3000</div>
+    </div>
+
+    <div id="display">
+      <div id="displayB">
+        <h1 class="on-display">TOTAL BET : </h1>
+        <p class="on-display" id="confirm">$0</p>
+      </div>
+      <div id="displayW">
+        <h1 class="on-display" id="outcome"></h1>
+        <p class="on-display" id="winner"></p>
+      </div>
+    </div>
+
+    <div id="player">
+      <img src="../images/deck/gray_back.png" class="my-card">
+      <img src="../images/deck/gray_back.png" class="my-card">
+      <img src="../images/deck/gray_back.png" class="my-card">
+      <img src="../images/deck/gray_back.png" class="my-card">
+      <img src="../images/deck/gray_back.png" class="my-card">
+      <div id="my-bets">
+        <div class="choice-contain">
+          <button class="choices-style" id="deal" onclick="dealCards()">DEAL</button>
+          <button class="choices-style" id="hit" onclick="hitMe()">HIT</button>
+          <button class="choices-style" id="stand" onclick="stay()">STAND</button>
+          <button class="choices-style" id="bet" onclick="clearBet()">Clear Bet</button>
+        </div>
+        <div class="choice-contain">
+          <button class="choices-style" onclick="addBet(500)">500</button>
+          <button class="choices-style" onclick="addBet(200)">200</button>
+          <button class="choices-style" onclick="addBet(100)">100</button>
+          <a href = "main.html" class="choices-style" ><button class="choices-style" id="currBet">EXIT</button></a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="../js/bj.js"></script>
+</body>
+
+</html>
