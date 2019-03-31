@@ -31,6 +31,7 @@ const start = () => {
     aKey.innerHTML = getKeyInfo.letter;
     aKey.className = "smashKey";
     randSpawn(aKey);
+    aKey.style.transition = `${mvSpeed/1000}s`
     currCodes.push(getKeyInfo.code);
 
     document.addEventListener("keydown", key => {
@@ -38,9 +39,8 @@ const start = () => {
       if (key.keyCode == getKeyInfo.code) {
         aKey.remove();
 
-        if (mvSpeed > 1000) {
-          mvSpeed -= 100;
-          console.log(mvSpeed);
+        if (mvSpeed > 500) {
+          mvSpeed -= 50;
         }
 
       }
@@ -49,7 +49,7 @@ const start = () => {
         if (key.keyCode == currCodes[i]) {
           points += 10;
           score.innerHTML = points;
-          currCodes.splice(i,1);
+          currCodes.splice(i, 1);
         }
       }
     });
