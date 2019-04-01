@@ -164,7 +164,7 @@ a {
 /*################## Main Page #################*/
 /*################## BlackJack Page #################*/
 #bj {
-  background: url(../images/ace.jpg);
+  background: url(../images/deck/green.jpg);
   background-size: cover;
 }
 
@@ -194,7 +194,6 @@ a {
 
 #display {
   grid-area: display;
-  background: rgba(0, 0, 0, .5);
   display: flex;
 }
 
@@ -363,6 +362,56 @@ li {
 }
 
 /*#######################Smash'em Page###############*/
+/*########################INVADER#######################*/
+#invader-back{
+  /* background: url(../images/invade/invadeBack.gif); */
+}
+#my-ship{
+  background: url(../images/invade/ship.png);
+  background-size: contain;
+  background-position: center;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: 85%;
+  transition: .1s linear;
+  z-index: 3;
+}
+.bullet{
+  background: red;
+  height: 10px;
+  width: 10px;
+  z-index: 1;
+  position: absolute;
+  transition: .1s linear;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*########################INVADER#######################*/
 /*keyframe animations################################*/
 @keyframes flashy-colors {
   0% {

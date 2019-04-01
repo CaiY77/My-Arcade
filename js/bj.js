@@ -32,6 +32,12 @@ const buildDeck = () => {
   for (let i = 0; i < deck.length; i++) {
     deck[i].source = cardPics[i];
   }
+  for (let d = 0; d < 7; d++) {
+    for (let c = 0; c < 52; c++) {
+      deck.push(deck[c]);
+    }
+  }
+  console.log(deck);
   return deck;
 }
 
@@ -100,10 +106,11 @@ const clearBet = () => {
 const dealCards = () => {
   clean();
   setBet();
-  deck = [];
-  buildDeck();
-  suffle();
-
+  if (deck.length < 52) {
+    deck = [];
+    buildDeck();
+    suffle();
+  }
   setTimeout(() => {
     player.push(getMyCard());
   }, 300);
@@ -169,24 +176,24 @@ const mySum = () => {
   }
 
   if (sum > 21) {
-    sum = hasAces(player,sum);
+    sum = hasAces(player, sum);
   }
 
   return sum;
 }
 
-const hasAces = (hand,sum) => {
+const hasAces = (hand, sum) => {
   let aceCounter = 0;
-  for(let i = 0; i < hand.length; i++){
-    if(hand[i].num == "Ace"){
+  for (let i = 0; i < hand.length; i++) {
+    if (hand[i].num == "Ace") {
       aceCounter++;
     }
   }
-  while (aceCounter > 0){
+  while (aceCounter > 0) {
     sum -= 10;
     aceCounter--;
 
-    if(sum <= 21){
+    if (sum <= 21) {
       break;
     }
 
@@ -201,7 +208,7 @@ const cpuSum = () => {
   }
 
   if (sumD > 21) {
-    sumD = hasAces(dealer,sumD);
+    sumD = hasAces(dealer, sumD);
   }
 
   return sumD;
