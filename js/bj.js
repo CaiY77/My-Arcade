@@ -68,8 +68,10 @@ let deal = document.getElementById('deal');
 let bet = document.getElementById('bet');
 let hit = document.getElementById('hit');
 let stand = document.getElementById('stand');
-let sound = new Audio();
-sound.src = '../audio/clap.mp3';
+let clap = new Audio();
+clap.src = '../audio/clap.mp3';
+let boo = new Audio();
+boo.src = '../audio/boo.mp3'
 
 
 const setBet = () => {
@@ -206,6 +208,7 @@ const cpuSum = () => {
 }
 
 const playerLose = () => {
+  boo.play();
   outcome.innerHTML = `Player: ${mySum()} Dealer: ${cpuSum()}`;
   winner.innerHTML = "DEALER WINS!!!";
   confirm.innerHTML = "$0";
@@ -250,6 +253,7 @@ const hitCpu = () => {
 
     cpu = cpuSum();
     if (dealer.length == 5 && cpu < 22) {
+      boo.play();
       outcome.innerHTML = "FIVE CARD, NO BUST!";
       winner.innerHTML = "DEALER WINS!!!";
       confirm.innerHTML = "$0";
@@ -279,7 +283,7 @@ const reset = () => {
 }
 
 const payMe = () => {
-  sound.play();
+  clap.play();
   confirm.innerHTML = "$0";
   reset();
   myBet += myBet;

@@ -9,6 +9,7 @@ let score = document.getElementById('scoreBoard');
 let body = document.querySelector('body');
 let instruc = document.getElementById('instructions');
 let currCodes = [];
+let reload = document.getElementById('gameover');
 
 const makeKeys = () => {
   for (let i = 0; i < letter.length; i++) {
@@ -24,7 +25,7 @@ makeKeys();
 const start = () => {
 
   instruc.style.display = 'none';
-  setInterval(() => {
+  let spawn = setInterval(() => {
     let aKey = document.createElement('div');
     let rand = Math.floor(Math.random() * press.length);
     let getKeyInfo = press[rand];
@@ -64,6 +65,13 @@ const start = () => {
     body.appendChild(aKey);
 
     console.log(currCodes);
+
+    if(currCodes.length > 30){
+      alert(`GAMEOVER!! You scored ${points} points!`);
+      clearInterval(spawn);
+      reload.style.display = 'block';
+    }
+
   }, 333);
 
 }

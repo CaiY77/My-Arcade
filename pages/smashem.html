@@ -21,14 +21,17 @@
   <h2 class = "instrStyle">Instructions</h2>
   <ul class = "rules">
     <li>Letters will appear at random.</li>
-    <li>Press the lowercase of each accordingly to remove.</li>
-    <li>Each removed letter is 10 points!</li>
-    <li>If 2 or more of a letter is present, it will remove all.(+10/each)</li>
+    <li>Press the lowercase of each letter accordingly to remove.</li>
+    <li>If 1+ of a the same letter is present, it will remove all.</li>
+    <li>If 50+ letters are present, YOU LOSE!</li>
     <li>Warning: Letters move faster as you go...</li>
     <button class="closeInstr" onclick = "start()" >PLAY NOW!</button>
   </ul>
 </div>
 
+<div id="gameover">
+  <button class="reload" onclick = "location.reload()">PLAY AGAIN</button>
+</div>
 
   <script type="text/javascript" src="../js/smashem.js"></script>
 </body>

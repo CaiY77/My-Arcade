@@ -64,7 +64,7 @@
   height: 70%;
 }
 
-#add-coin:hover, #start:hover {
+#add-coin:hover, #start:hover, .reload:hover{
   color: black;
   border: outset 5px;
   background: white;
@@ -100,6 +100,7 @@
   background: rgba(0, 0, 0, 0.5);
   border: solid rgb(20, 30, 120) 10px;
   border-radius: 50px;
+  z-index: 5;
   margin: 5vh 5vw 5vh 5vw;
   display: grid;
   grid-template-columns: 100%;
@@ -114,6 +115,7 @@
   font-family: joystick;
   color: white;
   flex: 1;
+  z-index: 5;
   width: 100%;
 }
 
@@ -126,6 +128,7 @@
   grid-area: title;
   text-align: center;
   color: white;
+  z-index: 5;
   font-size: 35pt;
   padding: 7vh 0 0 0;
   border-bottom: solid rgb(20, 30, 120) 10px;
@@ -137,6 +140,7 @@
   text-align: center;
   color: white;
   display: flex;
+  z-index: 5;
   flex-direction: column;
   justify-content: space-around;
 }
@@ -147,6 +151,14 @@
 
 a {
   text-decoration: none;
+}
+
+.object {
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  z-index: 1;
+  left: -150px;
 }
 
 /*################## Main Page #################*/
@@ -324,6 +336,30 @@ li {
   padding-top: 5vh;
   font-size: 70pt;
   font-family: joystick;
+}
+
+#gameover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .9);
+  z-index: 1;
+  display: none;
+  z-index: 5;
+}
+.reload {
+  color: white;
+  background: rgba(0, 0, 0, 1);
+  font-size: 50pt;
+  position: absolute;
+  margin: auto;
+  width: 30vw;
+  padding: 40px 30px 30px 30px;
+  top: 45vh;
+  left: 35vw;
+  z-index: 5;
 }
 
 /*#######################Smash'em Page###############*/
