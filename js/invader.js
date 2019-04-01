@@ -3,9 +3,10 @@ let body = document.querySelector('body');
 let currLeft = window.innerWidth * 0.5 - 50;
 let currTop = window.innerHeight * 0.85;
 let fireSpeed = 20;
-let ghostSpeed = 100;
+let invSpeed = 100;
 let score = 0;
 let size = 10;
+let type = '';
 
 let invaderObj = [{
     name: 'black',
@@ -21,15 +22,15 @@ let invaderObj = [{
   }
 ];
 let power = [{
-    name: 'slow',
-    img: "url(../images/invade/slow.jpeg)"
+    name: 'SLOW',
+    img: "url(../images/invade/slow.png)"
   },
   {
-    name: 'fast',
+    name: 'FAST',
     img: "url(../images/invade/fast.png)"
   },
   {
-    name: 'big',
+    name: 'BIG',
     img: "url(../images/invade/big.png)"
   }
 ];
@@ -96,11 +97,42 @@ const fire = () => {
     }
 
     contactWithInvader(bullet, shipCenterVert, shipCenterHoriz);
+    contactWithPower(bullet, shipCenterVert, shipCenterHoriz)
 
     bullet.style.top = `${shipCenterVert}px`;
   }, 100);
 
   body.appendChild(bullet);
+}
+
+const contactWithPower = (bullet, top, left) => {
+  let all = document.getElementsByClassName("power");
+  for (let i = 0; i < all.length; i++) {
+    if ((left > all[i].offsetLeft) && (left < all[i].offsetLeft + 75)) {
+      if ((top <= all[i].offsetTop + 75) && (top >= all[i].offsetTop)) {
+        bullet.remove();
+        all[i].remove();
+        if (type == 'FAST') {
+          fireSpeed = 100;
+          setTimeout(() => {
+            fireSpeed = 20;
+          }, 5000);
+        }
+        if (type == 'BIG') {
+          size = 30;
+          setTimeout(() => {
+            size = 10;
+          }, 5000);
+        }
+        if (type == 'SLOW') {
+          invSpeed = 300;
+          setTimeout(() => {
+            invSpeed = 100;
+          }, 5000);
+        }
+      }
+    }
+  }
 }
 
 const contactWithInvader = (bullet, top, left) => {
@@ -120,16 +152,22 @@ const contactWithInvader = (bullet, top, left) => {
 setInterval(() => {
   let powerUp = document.createElement('div');
   powerUp.className = 'power';
-  let randPow = power[Math.floor(Math.random()*power.length)];
+  let randPow = power[Math.floor(Math.random() * power.length)];
   let randLeft = Math.floor(Math.random() * (window.innerWidth - 50));
-  let randTop = Math.floor(Math.random() * (window.innerHeight - 50));
+  let randTop = Math.floor(Math.random() * (window.innerHeight - 300));
   powerUp.style.left = `${randLeft}px`;
   powerUp.style.top = `${randTop}px`;
   powerUp.style.background = randPow.img;
   powerUp.style.backgroundRepeat = "no-repeat";
   powerUp.style.backgroundSize = "contain";
+  type = randPow.name;
   body.appendChild(powerUp);
-}, 20000);
+
+  setTimeout(() => {
+    powerUp.remove();
+  }, 6000);
+
+}, 15000);
 
 // spawn black
 setInterval(() => {
@@ -145,11 +183,11 @@ setInterval(() => {
 
   setInterval(() => {
     currTop += randomObj.px;
-    if (currTop >= window.innerHeight) {
+    if (currTop >= window.innerHeight-50) {
       invader.remove();
     }
     invader.style.top = `${currTop}px`;
-  }, ghostSpeed);
+  }, invSpeed);
 
   body.appendChild(invader);
 }, 2500);
@@ -168,11 +206,11 @@ setInterval(() => {
 
   setInterval(() => {
     currTop += randomObj.px;
-    if (currTop >= window.innerHeight) {
+    if (currTop >= window.innerHeight-50) {
       invader.remove();
     }
     invader.style.top = `${currTop}px`;
-  }, ghostSpeed);
+  }, invSpeed);
 
   body.appendChild(invader);
 }, 12500);
