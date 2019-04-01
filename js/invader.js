@@ -5,6 +5,7 @@ let currTop = window.innerHeight * 0.85;
 let fireSpeed = 20;
 let ghostSpeed = 100;
 let score = 0;
+let size = 10;
 
 let invaderObj = [{
     name: 'black',
@@ -84,6 +85,8 @@ const fire = () => {
   let shipCenterVert = currTop + 50;
   bullet.style.left = `${shipCenterHoriz}px`;
   bullet.style.top = `${shipCenterVert}px`;
+  bullet.style.width = `${size}px`;
+  bullet.style.height = `${size}px`;
 
   setInterval(() => {
     shipCenterVert -= fireSpeed;
@@ -113,10 +116,20 @@ const contactWithInvader = (bullet, top, left) => {
     }
   }
 }
-
+//spawn power-ups
 setInterval(() => {
-
-}, 20000)
+  let powerUp = document.createElement('div');
+  powerUp.className = 'power';
+  let randPow = power[Math.floor(Math.random()*power.length)];
+  let randLeft = Math.floor(Math.random() * (window.innerWidth - 50));
+  let randTop = Math.floor(Math.random() * (window.innerHeight - 50));
+  powerUp.style.left = `${randLeft}px`;
+  powerUp.style.top = `${randTop}px`;
+  powerUp.style.background = randPow.img;
+  powerUp.style.backgroundRepeat = "no-repeat";
+  powerUp.style.backgroundSize = "contain";
+  body.appendChild(powerUp);
+}, 20000);
 
 // spawn black
 setInterval(() => {
