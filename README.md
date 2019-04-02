@@ -12,7 +12,7 @@ Switch out of each game when ever you feel like it. If you lose, hate the player
 
 # BlackJack
 
-Gambling doesn't get any better than this! This is a risk-free functioning blackjack game! That means if you lose you won't get bankrupt. This game runs by regular Blackjack rules, 8 decks will be used at a time (this means you won't be able to count card). Closest to 21 wins, anything over 21 is a bust. Numerical cards retain their values, picture cards are value of 10 and Aces are 11/1 interchangeably by needs. When you win, you receive double your bet. Dealer will ALWAYS hit until their hand is greater than 16.
+Gambling doesn't get any better than this! This is a risk-free functioning blackjack game! That means if you lose you won't get bankrupt. This game runs by regular Blackjack rules, 8 decks will be used at a time (this means you won't be able to count card). Closest to 21 wins, anything over 21 is a bust. Numerical cards retain their values, picture cards are value of 10 and Aces are 11/1 interchangeably by needs. When you win, you receive double your bet. Dealer will ALWAYS hit until their hand is greater than 16. There are a substantial amount of javascript to cover each and every possible outcome weather it's player win, player bust, dealer win... etc. Lose all your money a stupid all in or just being bad? Re-fresh the game and you'll be back with the starting amount of cash
 
 ### No Double Down :( ###
 
@@ -97,16 +97,37 @@ let spawn = setInterval(() => {
 }, 333);
 ```
 
-# Alien Invasion 2.0
+# Space Invasion 2.0
 
-My own twist on the classic Alien Invasion game. Game will contain a ship of some sort which can be controlled with up, down, left, right keys.
-Objects of various sizes will spawn and random location and each will descend at different speeds. Player can shoot falling object. Player has 5 lives, each object that gets pass the ship will result in -1, if ship comes in contact with object, -1. Random buffs will also spawn at random locations that will enhance ships features (ex. fire-rate, clear-all, slow-motion...etc).
-
-HTML, CSS, JS
-
-
-*ANTICIPATED DIFFICULTY*
-- The use of unit collision without a grid.
-
-*POTENTIAL SOLUTIONS*
-- research research research! Use blerf classwork for general idea.
+Old but gold, I present my own twist on the classic Space Invasion game. Game will contain a ship of some sort which can be controlled with up, down, left, right keys. Objects of various speeds will spawn and random location and each will descend at different speeds. Player can shoot falling object. Player has 10 lives, each object that gets pass the ship will result in -1, if ship comes in contact with object, -1. Random buffs will also spawn at random locations that will enhance ships features (ex. fire-rate, clear-all, slow-motion...etc). With the use of javascript these invaders can spawn anywhere, be careful.
+```javascript
+const contactWithPower = (bullet, top, left) => {
+  let all = document.getElementsByClassName("power");
+  for (let i = 0; i < all.length; i++) {
+    if ((left > all[i].offsetLeft) && (left < all[i].offsetLeft + 75)) {
+      if ((top <= all[i].offsetTop + 75) && (top >= all[i].offsetTop)) {
+        bullet.remove();
+        all[i].remove();
+        if (type == 'FAST') {
+          fireSpeed = 100;
+          setTimeout(() => {
+            fireSpeed = 25;
+          }, 5000);
+        }
+        if (type == 'BIG') {
+          size = 30;
+          setTimeout(() => {
+            size = 10;
+          }, 5000);
+        }
+        if (type == 'SLOW') {
+          invSpeed = 300;
+          setTimeout(() => {
+            invSpeed = 100;
+          }, 5000);
+        }
+      }
+    }
+  }
+}
+```
