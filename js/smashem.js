@@ -64,8 +64,6 @@ const start = () => {
 
     body.appendChild(aKey);
 
-    console.log(currCodes);
-
     if(currCodes.length > 30){
       alert(`GAMEOVER!! You scored ${points} points!`);
       clearInterval(spawn);

@@ -46,8 +46,56 @@ const buildDeck = () => {
 }
 
 ```
-#Smash'em All
+# Smash'em All
 
+Innovation at its finest. I present to you Smash'em All. This is a typing game. Purpose of this game to show my understanding of class materials and how I apply these skills. Inspiration of this game comes from, one, the need for coders to type fast and two, the need for the game to be annoying. There are uses of CSS that will make this game harder than it should be and addition JS to really drive you nuts. Rules are simple. See a capitalization of a letter? press the corresponding lowercase letter to remove. Each remove is rewarded 10 points. Game is over if 50 letters are present on the screen. If more than 1 of the same letter is present, pressing the corresponding lowercase letter will remove all. The last rule is actually a disadvantage... Each letter removed will result in the increase in the letter's movement. GoodLuck! Enjoy the game and try not to get too dizzy.
+
+```javascript
+let spawn = setInterval(() => {
+  let aKey = document.createElement('div');
+  let rand = Math.floor(Math.random() * press.length);
+  let getKeyInfo = press[rand];
+  aKey.innerHTML = getKeyInfo.letter;
+  aKey.className = "smashKey";
+  randSpawn(aKey);
+  aKey.style.transition = `${mvSpeed/1000}s`
+  currCodes.push(getKeyInfo.code);
+
+  document.addEventListener("keydown", key => {
+    if (key.keyCode == getKeyInfo.code) {
+      aKey.remove();
+
+      if (mvSpeed > 500) {
+        mvSpeed -= 25;
+      }
+
+    }
+
+    for (let i = 0; i < currCodes.length; i++) {
+      if (key.keyCode == currCodes[i]) {
+        points += 10;
+        score.innerHTML = points;
+        currCodes.splice(i, 1);
+      }
+    }
+  });
+
+  setInterval(() => {
+    randLeft = Math.random() * window.innerWidth + "px";
+    randTop = Math.random() * window.innerHeight + "px";
+    aKey.style.top = randTop;
+    aKey.style.left = randLeft;
+  }, mvSpeed);
+  body.appendChild(aKey);
+
+  if(currCodes.length > 30){
+    alert(`GAMEOVER!! You scored ${points} points!`);
+    clearInterval(spawn);
+    reload.style.display = 'block';
+  }
+
+}, 333);
+```
 
 # Alien Invasion 2.0
 
