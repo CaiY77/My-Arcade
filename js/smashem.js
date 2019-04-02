@@ -41,7 +41,7 @@ const start = () => {
         aKey.remove();
 
         if (mvSpeed > 500) {
-          mvSpeed -= 50;
+          mvSpeed -= 25;
         }
 
       }

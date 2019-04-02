@@ -10,8 +10,19 @@
 
 <body id="invader-back">
   <a class="exit" href="main.html">EXIT</a>
-<div id="my-ship"></div>
-<div class="invaders"></div>
+  <div id="scoreBoard" class="scoreStyle" style="color:white"></div>
+  <div id="instrucInvade">
+    <h2 class="invStyle instrStyle">Instructions</h2>
+    <ul class="rules">
+      <li class="invStyle">Use arrrow keys (left,right) to move.</li>
+      <li class="invStyle">Press (spacebar) to fire.</li>
+      <li class="invStyle">Differnet aliens descend at different speeds.</li>
+      <li class="invStyle">Three power-ups avaliable: Bullet Speed/Size & Slow Aliens </li>
+      <li class="invStyle">If aliens reach the bottom or you make contact you lose a life.</li>
+      <button class="closeInstr" onclick="start()">PLAY NOW!</button>
+    </ul>
+  </div>
+  <div id="my-ship"></div>
 
   <script type="text/javascript" src="../js/invader.js"></script>
 </body>
