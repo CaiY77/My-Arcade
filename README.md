@@ -99,7 +99,8 @@ let spawn = setInterval(() => {
 
 # Space Invasion 2.0
 
-Old but gold, I present my own twist on the classic Space Invasion game. Game will contain a ship of some sort which can be controlled with up, down, left, right keys. Objects of various speeds will spawn and random location and each will descend at different speeds. Player can shoot falling object. Player has 10 lives, each object that gets pass the ship will result in -1, if ship comes in contact with object, -1. Random buffs will also spawn at random locations that will enhance ships features (ex. fire-rate, clear-all, slow-motion...etc). With the use of javascript these invaders can spawn anywhere, be careful.
+Old but gold, I present my own twist on the classic Space Invasion game. Game will contain a ship of some sort which can be controlled with left & right keys. Objects of various speeds will spawn and random location and each will descend at different speeds. With the use and practice of unit collision with javascript, the player can shoot falling object to destroy them. Player has 10 lives, each object that gets pass the ship will result in -1, if ship comes in contact with object, -1. Random buffs will also spawn at random locations that will enhance ships features (ex. fire-rate, clear-all, slow-motion...etc). With the use of javascript these invaders can spawn anywhere, be careful.
+
 ```javascript
 const contactWithPower = (bullet, top, left) => {
   let all = document.getElementsByClassName("power");

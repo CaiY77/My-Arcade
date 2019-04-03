@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <title>Space Invader 2.0</title>
   <link rel="stylesheet" href="../css/main.css">
-  <link rel="icon" href="../images/logo.jpg" type="image/gif">
+  <link rel="icon" href="../images/logo.png" type="image/gif">
 </head>
 
 <body id="invader-back">
-  <a class="exit" href="main.html">EXIT</a>
+  <a class="exit" href="main.html" style="color:white">EXIT</a>
   <div id="scoreBoard" class="scoreStyle" style="color:white"></div>
   <div id="instrucInvade">
     <h2 class="invStyle instrStyle">Instructions</h2>
@@ -21,6 +21,21 @@
       <li class="invStyle">If aliens reach the bottom or you make contact you lose a life.</li>
       <button class="closeInstr" onclick="start()">PLAY NOW!</button>
     </ul>
+  </div>
+  <div id="lives-container">
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+    <div class="lives"></div>
+  </div>
+  <div id="gameover">
+    <button class="reload" onclick = "location.reload()">PLAY AGAIN</button>
   </div>
   <div id="my-ship"></div>
 

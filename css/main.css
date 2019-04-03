@@ -27,7 +27,7 @@
     "coin"
     "coin-count"
     "add-coin"
-    "start";
+    "start"
 }
 
 .welcome {
@@ -343,7 +343,7 @@ li {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, .5);
   z-index: 1;
   display: none;
   z-index: 5;
@@ -365,7 +365,8 @@ li {
 /*#######################Smash'em Page###############*/
 /*########################INVADER#######################*/
 #invader-back {
-  background: url(../images/invade/invadeBack.gif);
+  background: url(../images/invade/invadeBack.png);
+  overflow-x: hidden;
 }
 
 #my-ship {
@@ -392,6 +393,7 @@ li {
   text-align: center;
   position: absolute;
   z-index: 10;
+  /* display: none; */
 }
 
 .invStyle {
@@ -416,6 +418,22 @@ li {
   position: absolute;
   height: 50px;
   width: 50px;
+}
+#lives-container{
+  display: flex;
+  width: 400px;
+  height: 30px;
+  position: absolute;
+  top: 95%;
+  left: 0;
+}
+.lives{
+  background:url(../images/invade/heart.png);
+  background-size: cover;
+  flex: 1;
+  margin-left: 10px;
+  height: 30px;
+  width: 30px;
 }
 
 /*########################INVADER#######################*/
