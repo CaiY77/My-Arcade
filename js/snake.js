@@ -2,6 +2,7 @@ let board = document.getElementById('snake-container');
 let boxes = document.getElementsByClassName('single-box');
 let direction = 'right';
 let snakeArr = [];
+let mySnake;
 let movingInterval;
 let speed = 400;
 let points = 0;
@@ -104,9 +105,8 @@ class LinkedList {
 
 } // LinkedList Class
 
-let mySnake = new LinkedList();
-
 const initializeGame = () => {
+  mySnake = new LinkedList();
   for (let row = 0; row < 35; row++) {
     snakeArr[row] = [];
     for (let col = 0; col < 35; col++) {
@@ -117,7 +117,7 @@ const initializeGame = () => {
     }
   }
   mySnake.add(17, 1);
-  setTimeout(startMoving, 1000);
+  setTimeout(startMoving(speed), 1000);
   spawnFood();
 }
 
@@ -172,11 +172,13 @@ const eat = (row, col) => {
   mySnake.add(mySnake.findLastRow(), mySnake.findLastCol());
   spawnFood();
   if (speed > 50) {
-    speed -= 50;
+    speed -= 25;
+    clearInterval(movingInterval);
+    startMoving(speed);
   }
 }
 
-const startMoving = () => {
+const startMoving = (speed) => {
   movingInterval = setInterval(() => {
     mySnake.move(direction);
   }, speed);
