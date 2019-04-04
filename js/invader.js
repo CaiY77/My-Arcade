@@ -14,6 +14,12 @@ let points = 0;
 let size = 10;
 let type = '';
 let liveCount = 9;
+let loseAudio = new Audio();
+loseAudio.src = '../audio/lose.mp3';
+let fireAudio = new Audio();
+fireAudio.src = '../audio/pew.mp3';
+let boomAudio = new Audio();
+boomAudio.src = '../audio/boom.mp3';
 
 let invaderObj = [{
     name: 'green',
@@ -134,6 +140,8 @@ const start = () => {
     }, 100);
 
     body.appendChild(bullet);
+    fireAudio.play();
+    fireAudio.currentTime = 0;
   }
 
   const contactWithPower = (bullet, top, left) => {
@@ -176,12 +184,14 @@ const start = () => {
       if ((left > all[i].offsetLeft) && (left < all[i].offsetLeft + 75)) {
         if ((top <= all[i].offsetTop + 75) && (top >= all[i].offsetTop)) {
           bullet.remove();
+          boomAudio.play();
           boom(all[i]);
           setTimeout(() => {
             all[i].remove();
           }, 500);
+          boomAudio.currentTime = 0;
           points += pointArr[i];
-          pointArr.splice(i,1);
+          pointArr.splice(i, 1);
           score.innerHTML = points;
         }
       }
@@ -189,8 +199,10 @@ const start = () => {
   }
 
   const loseLife = () => {
+    loseAudio.play();
     lives[liveCount].style.opacity = 0;
     liveCount -= 1;
+    loseAudio.currentTime = 0;
     if (liveCount < 0) {
       alert(`GAMEOVER! You scored ${points} points!`);
       reload.style.display = 'block';
@@ -235,7 +247,7 @@ const start = () => {
       if (body.contains(invader)) {
 
         currTop += randomObj.px;
-        if (currTop >= window.innerHeight - 50) {
+        if (currTop >= window.innerHeight - 10) {
           invader.remove();
           clearInterval(objMove);
           loseLife();

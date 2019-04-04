@@ -10,6 +10,8 @@ let body = document.querySelector('body');
 let instruc = document.getElementById('instructions');
 let currCodes = [];
 let reload = document.getElementById('gameover');
+let swooshAudio = new Audio();
+swooshAudio.src = '../audio/swoosh.mp3';
 
 const makeKeys = () => {
   for (let i = 0; i < letter.length; i++) {
@@ -38,7 +40,9 @@ const start = () => {
     document.addEventListener("keydown", key => {
 
       if (key.keyCode == getKeyInfo.code) {
+        swooshAudio.play();
         aKey.remove();
+        swooshAudio.currentTime = 0;
 
         if (mvSpeed > 500) {
           mvSpeed -= 25;
@@ -64,7 +68,7 @@ const start = () => {
 
     body.appendChild(aKey);
 
-    if(currCodes.length > 30){
+    if (currCodes.length > 30) {
       alert(`GAMEOVER!! You scored ${points} points!`);
       clearInterval(spawn);
       reload.style.display = 'block';

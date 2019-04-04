@@ -10,6 +10,12 @@ let mySnake;
 let movingInterval;
 let speed = 400;
 let points = 0;
+let moveAudio = new Audio();
+moveAudio.src = '../audio/move.mp3';
+let eatAudio = new Audio();
+eatAudio.src = '../audio/bite.mp3';
+let loseAudio = new Audio();
+loseAudio.src = '../audio/lose.mp3';
 
 class Node {
   constructor(row, col) {
@@ -71,7 +77,6 @@ class LinkedList {
 
     function moveRest() {
       current = current.next;
-
       while (current != null) {
         let rowHold = current.row;
         let colHold = current.col;
@@ -143,6 +148,7 @@ const updateGame = () => {
 
 const check = (row, col) => {
   if (row < 0 || col < 0 || row > 34 || col > 34) {
+    loseAudio.play();
     wall.style.display = 'block';
     wallScore.innerHTML = `YOU SCORED ${points} POINTS!!!`;
     clearInterval(movingInterval);
@@ -150,6 +156,7 @@ const check = (row, col) => {
   } else if (snakeArr[row][col] == 0) {
     return true;
   } else if (snakeArr[row][col] == 1) {
+    loseAudio.play();
     consume.style.display = 'block';
     eatScore.innerHTML = `YOU SCORED ${points} POINTS!!!`;
     clearInterval(movingInterval);
@@ -177,6 +184,7 @@ document.addEventListener('keydown', key => {
 });
 
 const eat = (row, col) => {
+  eatAudio.play();
   snakeArr[row][col] = 0;
   mySnake.add(mySnake.findLastRow(), mySnake.findLastCol());
   spawnFood();
@@ -185,11 +193,14 @@ const eat = (row, col) => {
     clearInterval(movingInterval);
     startMoving(speed);
   }
+  eatAudio.currentTime = 0;
 }
 
 const startMoving = (speed) => {
   movingInterval = setInterval(() => {
+    moveAudio.play();
     mySnake.move(direction);
+    moveAudio.currentTime = 0;
   }, speed);
 }
 
