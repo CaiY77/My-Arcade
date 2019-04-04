@@ -135,7 +135,6 @@ const contactWithPower = (bullet, top, left) => {
 
 # Snake
 
-
 ```javascript
 move(direction) {
   let current = this.head;
