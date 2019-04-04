@@ -8,17 +8,33 @@
   <title>Snake</title>
 </head>
 
-<body>
-  <a class="exit" href="main.html">EXIT</a>
+<body id="snake-back">
+  <div class="snake-instruction">
+    <a class="exit" href="main.html">EXIT</a>
+    <h1 id='snake-title'>SNAKE</h1>
+    <div id="snake-rules">
+      <ul>
+        <li>CONTROLS: UP, DOWN, LEFT, RIGHT (ARROW KEYS)</li>
+        <li>MOUSES WILL SPAWN RANDOMLY ON THE SCREEN.</li>
+        <li>CONSUMING THE MOUSE WILL INCREASE SNAKE SPEED & LENGTH</li>
+        <li>100 POINTS AWARDED FOR EACH CONSUMPTION</li>
+        <li>HITTING WALL OR EATING YOURSELF WILL RESULT IN GAMEOVER</li>
+      </ul>
+
+    </div>
+    <h1 id="snake-score">0000</h1>
+
+    <button id="play-snake" onclick="initializeGame()">PLAY NOW!</button>
+  </div>
+
   <div id="snake-container">
   </div>
-  <button onclick="initializeGame()">START THE FUCKEN GAME</button>
   <div id="wall">
     <div class="loseContain">
       <h2 class="snake-lose">GAMEOVER!!!</h2>
       <h3 class="funny">YOU WALKED INTO A WALL!!! THAT OR THE WALL WALKED INTO YOU...</h3>
       <h4 id="wall-score"></h4>
-      <button id = "play-again"onclick="location.reload()">PLAY AGAIN?</button>
+      <button id="play-again" onclick="location.reload()">PLAY AGAIN?</button>
     </div>
   </div>
   <div id="eat">
@@ -26,7 +42,7 @@
       <h2 class="snake-lose">GAMEOVER!!!</h2>
       <h3 class="funny">CANNABALISM IS NOT ALLOWED!!! EVEN IF IT'S YOURSELF...</h3>
       <h4 id="eat-score"></h4>
-      <button id = "play-again"onclick="location.reload()">PLAY AGAIN?</button>
+      <button id="play-again" onclick="location.reload()">PLAY AGAIN?</button>
     </div>
   </div>
   <script type="text/javascript" src="../js/snake.js"></script>

@@ -4,6 +4,7 @@ let wallScore = document.getElementById('wall-score');
 let wall = document.getElementById('wall');
 let consume = document.getElementById('eat');
 let eatScore = document.getElementById('eat-score');
+let updatePoints = document.getElementById('snake-score');
 let direction = 'right';
 let snakeArr = [];
 let mySnake;
@@ -115,6 +116,7 @@ class LinkedList {
 } // LinkedList Class
 
 const initializeGame = () => {
+  document.getElementById('play-snake').style.display = 'none';
   mySnake = new LinkedList();
   for (let row = 0; row < 35; row++) {
     snakeArr[row] = [];
@@ -134,13 +136,13 @@ const updateGame = () => {
   for (let row = 0; row < 35; row++) {
     for (let col = 0; col < 35; col++) {
       if (snakeArr[row][col] == 1) {
-        boxes[row * 35 + col].style.background = "green";
+        boxes[row * 35 + col].style.background = "red";
       } else if (snakeArr[row][col] == 2) {
         boxes[row * 35 + col].style.background = "url(../images/snake/mouse.png)";
         boxes[row * 35 + col].style.backgroundSize = "cover";
         boxes[row * 35 + col].style.backgroundRepeat = "no-repeat";
       } else {
-        boxes[row * 35 + col].style.background = "black";
+        boxes[row * 35 + col].style.background = "rgb(34, 162, 66)";
       }
     }
   }
@@ -164,6 +166,7 @@ const check = (row, col) => {
   } else if (snakeArr[row][col] == 2) {
     points += 100;
     eat(row, col);
+    updatePoints.innerHTML = points;
     return true;
   }
 }
