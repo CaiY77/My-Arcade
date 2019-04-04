@@ -444,6 +444,7 @@ li {
   height: 700px;
   width: 700px;
   position: absolute;
+  background: black;
   top: calc(50% - 350px);
   left: calc(50% - 350px);
   border:solid;
@@ -454,11 +455,6 @@ li {
 .single-box {
   height: 20px;
   width: 20px;
-}
-.box-taken{
-  height: 20px;
-  width: 20px;
-  background: white;
 }
 
 /*#######################SNAKE#########################*/

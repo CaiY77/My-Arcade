@@ -2,6 +2,8 @@ let board = document.getElementById('snake-container');
 let boxes = document.getElementsByClassName('single-box');
 let direction = 'right';
 let snakeArr = [];
+let speed = 500;
+let points = 0;
 
 class Node {
   constructor(row, col) {
@@ -9,7 +11,7 @@ class Node {
     this.col = col;
     this.next = null;
   }
-}
+} //Node class
 
 class LinkedList {
   constructor() {
@@ -18,6 +20,7 @@ class LinkedList {
   }
 
   add(row, col) {
+    snakeArr[row][col] = 1;
     let node = new Node(row, col);
     let current;
     if (this.head == null) {
@@ -30,6 +33,7 @@ class LinkedList {
       current.next = node;
     }
     this.size++;
+    updateGame();
   }
 
   move(direction) {
@@ -41,41 +45,63 @@ class LinkedList {
       snakeArr[current.row][current.col] = 0;
       current.row -= 1;
       snakeArr[current.row][current.col] = 1;
+      moveRest();
     } else if (direction == 'down' && check(current.row + 1, current.col)) {
       snakeArr[current.row][current.col] = 0;
       current.row += 1;
       snakeArr[current.row][current.col] = 1;
+      moveRest();
     } else if (direction == 'left' && check(current.row, current.col - 1)) {
       snakeArr[current.row][current.col] = 0;
       current.col -= 1;
-      snakeArr[theHead.row][theHead.col] = 1;
-      updateGame();
+      snakeArr[current.row][current.col] = 1;
+      moveRest();
     } else if (direction == "right" && check(current.row, current.col + 1)) {
       snakeArr[current.row][current.col] = 0;
       current.col += 1;
       snakeArr[current.row][current.col] = 1;
+      moveRest();
     }
 
-    current = current.next;
+    function moveRest(){
+      current = current.next;
 
+      while (current != null) {
+        let rowHold = current.row;
+        let colHold = current.col;
+        snakeArr[rowHold][colHold] = 0;
+        current.row = newRow;
+        current.col = newCol;
+        snakeArr[newRow][newCol] = 1;
+        newRow = rowHold;
+        newCol = colHold;
+        current = current.next;
+      }
+    }
+      updateGame();
+  } // move Method
+
+  findLastRow() {
+    let current = this.head;
+    let row;
     while (current != null) {
-      
-      let rowHold = current.row;
-      let colHold = current.col;
-      snakeArr[rowHold][colHold] = 0;
-      current.row = newRow;
-      current.col = newCol;
-      snakeArr[newRow][newCol] = 1;
-
-
-
+      row = current.row;
       current = current.next;
     }
-
-    updateGame();
+    return row;
   }
 
-}
+  findLastCol() {
+    let current = this.head;
+    let col;
+    while (current != null) {
+      col = current.col;
+      current = current.next;
+    }
+    return col;
+  }
+
+}// LinkedList Class
 
 let mySnake = new LinkedList();
 
@@ -90,8 +116,8 @@ const initializeGame = () => {
     }
   }
   mySnake.add(17, 1);
-  snakeArr[17][1] = 1;
-  updateGame();
+  setTimeout(startMoving, 1000);
+  spawnFood();
 }
 
 const updateGame = () => {
@@ -110,19 +136,19 @@ const updateGame = () => {
 
 const check = (row, col) => {
   if (row < 0 || col < 0 || row > 34 || col > 34) {
+    // youLose();
     return false;
   } else if (snakeArr[row][col] == 0) {
     return true;
   } else if (snakeArr[row][col] == 1) {
     // youLose();
-    return true;
+    return false;
   } else if (snakeArr[row][col] == 2) {
-    // eat();
+    points += 100;
+    eat(row, col);
     return true;
   }
 }
-
-initializeGame();
 
 document.addEventListener('keydown', key => {
   if (key.keyCode == 37) {
@@ -139,6 +165,28 @@ document.addEventListener('keydown', key => {
   }
 });
 
-setInterval(() => {
-  mySnake.move(direction);
-}, 100);
+const eat = (row, col) => {
+  snakeArr[row][col] = 0;
+  mySnake.add(mySnake.findLastRow(), mySnake.findLastCol());
+  spawnFood();
+  if (speed > 50) {
+    speed -= 50;
+  }
+}
+
+const startMoving = () => {
+  setInterval(() => {
+    mySnake.move(direction);
+  }, speed);
+}
+
+const spawnFood = () => {
+  let row = Math.floor(Math.random() * 35);
+  let col = Math.floor(Math.random() * 35);
+  while (snakeArr[row][col] != 0) {
+    row = Math.floor(Math.random() * 35);
+    col = Math.floor(Math.random() * 35);
+  }
+  snakeArr[row][col] = 2;
+  updateGame();
+}
