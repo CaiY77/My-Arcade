@@ -441,12 +441,12 @@ li {
 /*########################INVADER#######################*/
 /*#######################SNAKE#########################*/
 #snake-container {
-  height: 700px;
-  width: 700px;
+  height: 770px;
+  width: 770px;
   position: absolute;
   background: black;
-  top: calc(50% - 350px);
-  left: calc(50% - 350px);
+  top: calc(50% - 385px);
+  left: calc(50% - 385px);
   border: solid;
   display: flex;
   flex-wrap: wrap;
@@ -455,6 +455,7 @@ li {
 .single-box {
   height: 20px;
   width: 20px;
+  border: solid rgba(255, 255, 255, 0.05) 1px;
 }
 
 #eat, #wall {
@@ -504,7 +505,7 @@ li {
   margin-left: 5%;
   color: white;
   background: black;
-  float:left;
+  float: left;
 }
 
 .loseContain {

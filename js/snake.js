@@ -129,10 +129,11 @@ const updateGame = () => {
   for (let row = 0; row < 35; row++) {
     for (let col = 0; col < 35; col++) {
       if (snakeArr[row][col] == 1) {
-        boxes[row * 35 + col].style.background = "white";
+        boxes[row * 35 + col].style.background = "green";
       } else if (snakeArr[row][col] == 2) {
         boxes[row * 35 + col].style.background = "url(../images/snake/mouse.png)";
         boxes[row * 35 + col].style.backgroundSize = "cover";
+        boxes[row * 35 + col].style.backgroundRepeat = "no-repeat";
       } else {
         boxes[row * 35 + col].style.background = "black";
       }
@@ -179,7 +180,7 @@ const eat = (row, col) => {
   snakeArr[row][col] = 0;
   mySnake.add(mySnake.findLastRow(), mySnake.findLastCol());
   spawnFood();
-  if (speed > 50) {
+  if (speed > 100) {
     speed -= 25;
     clearInterval(movingInterval);
     startMoving(speed);
