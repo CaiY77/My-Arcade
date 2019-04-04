@@ -64,7 +64,7 @@
   height: 70%;
 }
 
-#add-coin:hover, #start:hover, .reload:hover {
+#add-coin:hover, #start:hover, .reload:hover, #play-again:hover {
   color: black;
   border: outset 5px;
   background: white;
@@ -447,7 +447,7 @@ li {
   background: black;
   top: calc(50% - 350px);
   left: calc(50% - 350px);
-  border:solid;
+  border: solid;
   display: flex;
   flex-wrap: wrap;
 }
@@ -455,6 +455,65 @@ li {
 .single-box {
   height: 20px;
   width: 20px;
+}
+
+#eat, #wall {
+  background: url(../images/snake/eating.gif);
+  background-size: cover;
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  display: none;
+}
+
+#wall {
+  background: url(../images/snake/wall.gif);
+  background-size: cover;
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+
+.snake-lose {
+  font-family: joystick;
+  font-size: 60pt;
+}
+
+.funny {
+  font-size: 40pt;
+  margin-top: 5%;
+}
+
+#eat-score, #wall-score {
+  font-size: 50pt;
+  margin-top: 5%;
+}
+
+#play-again {
+  font-size: 50pt;
+  padding: 30px 20px 20px 20px;
+  margin-top: 10%;
+  margin-left: 5%;
+  color: white;
+  background: black;
+  float:left;
+}
+
+.loseContain {
+  background: rgba(255, 255, 255, .4);
+  height: 90%;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 3%;
+  text-align: center;
 }
 
 /*#######################SNAKE#########################*/

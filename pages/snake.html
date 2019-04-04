@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="icon" href="../images/logo.png" type="image/gif">
-    <title>Snake</title>
-  </head>
-  <body>
-    <div id="snake-container">
-    </div>
-    <button onclick="initializeGame()">START THE FUCKEN GAME</button>
 
-    <script type="text/javascript" src="../js/snake.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="icon" href="../images/logo.png" type="image/gif">
+  <title>Snake</title>
+</head>
+
+<body>
+  <a class="exit" href="main.html">EXIT</a>
+  <div id="snake-container">
+  </div>
+  <button onclick="initializeGame()">START THE FUCKEN GAME</button>
+  <div id="wall">
+    <div class="loseContain">
+      <h2 class="snake-lose">GAMEOVER!!!</h2>
+      <h3 class="funny">YOU WALKED INTO A WALL!!! THAT OR THE WALL WALKED INTO YOU...</h3>
+      <h4 id="wall-score"></h4>
+      <button id = "play-again"onclick="location.reload()">PLAY AGAIN?</button>
+    </div>
+  </div>
+  <div id="eat">
+    <div class="loseContain">
+      <h2 class="snake-lose">GAMEOVER!!!</h2>
+      <h3 class="funny">CANNABALISM IS NOT ALLOWED!!! EVEN IF IT'S YOURSELF...</h3>
+      <h4 id="eat-score"></h4>
+      <button id = "play-again"onclick="location.reload()">PLAY AGAIN?</button>
+    </div>
+  </div>
+  <script type="text/javascript" src="../js/snake.js"></script>
+</body>
+
 </html>

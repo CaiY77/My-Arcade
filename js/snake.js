@@ -1,5 +1,9 @@
 let board = document.getElementById('snake-container');
 let boxes = document.getElementsByClassName('single-box');
+let wallScore = document.getElementById('wall-score');
+let wall = document.getElementById('wall');
+let consume = document.getElementById('eat');
+let eatScore = document.getElementById('eat-score');
 let direction = 'right';
 let snakeArr = [];
 let mySnake;
@@ -138,12 +142,16 @@ const updateGame = () => {
 
 const check = (row, col) => {
   if (row < 0 || col < 0 || row > 34 || col > 34) {
-    youLose();
+    wall.style.display = 'block';
+    wallScore.innerHTML = `YOU SCORED ${points} POINTS!!!`;
+    clearInterval(movingInterval);
     return false;
   } else if (snakeArr[row][col] == 0) {
     return true;
   } else if (snakeArr[row][col] == 1) {
-    youLose();
+    consume.style.display = 'block';
+    eatScore.innerHTML = `YOU SCORED ${points} POINTS!!!`;
+    clearInterval(movingInterval);
     return false;
   } else if (snakeArr[row][col] == 2) {
     points += 100;
@@ -193,8 +201,4 @@ const spawnFood = () => {
   }
   snakeArr[row][col] = 2;
   updateGame();
-}
-
-const youLose = () => {
-  clearInterval(movingInterval);
 }
