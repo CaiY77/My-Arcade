@@ -2,7 +2,8 @@ let board = document.getElementById('snake-container');
 let boxes = document.getElementsByClassName('single-box');
 let direction = 'right';
 let snakeArr = [];
-let speed = 500;
+let movingInterval;
+let speed = 400;
 let points = 0;
 
 class Node {
@@ -63,7 +64,7 @@ class LinkedList {
       moveRest();
     }
 
-    function moveRest(){
+    function moveRest() {
       current = current.next;
 
       while (current != null) {
@@ -78,7 +79,7 @@ class LinkedList {
         current = current.next;
       }
     }
-      updateGame();
+    updateGame();
   } // move Method
 
   findLastRow() {
@@ -101,7 +102,7 @@ class LinkedList {
     return col;
   }
 
-}// LinkedList Class
+} // LinkedList Class
 
 let mySnake = new LinkedList();
 
@@ -126,7 +127,8 @@ const updateGame = () => {
       if (snakeArr[row][col] == 1) {
         boxes[row * 35 + col].style.background = "white";
       } else if (snakeArr[row][col] == 2) {
-        boxes[row * 35 + col].style.background = "red";
+        boxes[row * 35 + col].style.background = "url(../images/snake/mouse.png)";
+        boxes[row * 35 + col].style.backgroundSize = "cover";
       } else {
         boxes[row * 35 + col].style.background = "black";
       }
@@ -136,12 +138,12 @@ const updateGame = () => {
 
 const check = (row, col) => {
   if (row < 0 || col < 0 || row > 34 || col > 34) {
-    // youLose();
+    youLose();
     return false;
   } else if (snakeArr[row][col] == 0) {
     return true;
   } else if (snakeArr[row][col] == 1) {
-    // youLose();
+    youLose();
     return false;
   } else if (snakeArr[row][col] == 2) {
     points += 100;
@@ -175,7 +177,7 @@ const eat = (row, col) => {
 }
 
 const startMoving = () => {
-  setInterval(() => {
+  movingInterval = setInterval(() => {
     mySnake.move(direction);
   }, speed);
 }
@@ -189,4 +191,8 @@ const spawnFood = () => {
   }
   snakeArr[row][col] = 2;
   updateGame();
+}
+
+const youLose = () => {
+  clearInterval(movingInterval);
 }
