@@ -177,6 +177,27 @@ a {
     "display"
     "player"
 }
+#bet500{
+  background: url(../images/deck/chipB.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+#bet200{
+  background: url(../images/deck/chipR.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
+#bet100{
+  background: url(../images/deck/chipY.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}
 
 #dealer {
   grid-area: dealer;
@@ -235,6 +256,7 @@ a {
   background: rgba(0, 0, 0, .8);
   height: 100%;
   width: 100%;
+  border-radius: 50%;
 }
 
 .choice-contain {
@@ -254,12 +276,11 @@ a {
 }
 
 .exit {
-  font-family: joystick;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-  border: solid;
-  border-radius: 10px;
+  background: url(../images/exit.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
   position: absolute;
   top: 2vh;
   left: 1vw;
