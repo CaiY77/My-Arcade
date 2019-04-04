@@ -158,7 +158,7 @@ const changeVal = (myCard) => {
 }
 const hitMe = () => {
   player.push(getMyCard());
-  if (player.length == 5) {
+  if (player.length == 5 && mySum() < 21) {
     outcome.innerHTML = "FIVE CARD, NO BUST!";
     winner.innerHTML = "PLAYER WINS!!!";
     payMe();
