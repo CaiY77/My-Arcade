@@ -5,7 +5,7 @@ Welcome to my arcade. Enjoy my personalized remake/creation of these games using
 1) BlackJack
 2) Smash'em All
 3) Space Invaders 2.0
-4) TBD
+4) Snake
 
 Switch out of each game when ever you feel like it. If you lose, hate the player not the game!
 
@@ -130,5 +130,55 @@ const contactWithPower = (bullet, top, left) => {
       }
     }
   }
+}
+```
+
+# Snake
+
+
+```javascript
+move(direction) {
+  let current = this.head;
+  let newRow = current.row;
+  let newCol = current.col;
+
+  if (direction == 'up' && check(current.row - 1, current.col)) {
+    snakeArr[current.row][current.col] = 0;
+    current.row -= 1;
+    snakeArr[current.row][current.col] = 1;
+    moveRest();
+  } else if (direction == 'down' && check(current.row + 1, current.col)) {
+    snakeArr[current.row][current.col] = 0;
+    current.row += 1;
+    snakeArr[current.row][current.col] = 1;
+    moveRest();
+  } else if (direction == 'left' && check(current.row, current.col - 1)) {
+    snakeArr[current.row][current.col] = 0;
+    current.col -= 1;
+    snakeArr[current.row][current.col] = 1;
+    moveRest();
+  } else if (direction == "right" && check(current.row, current.col + 1)) {
+    snakeArr[current.row][current.col] = 0;
+    current.col += 1;
+    snakeArr[current.row][current.col] = 1;
+    moveRest();
+  }
+
+  function moveRest() {
+    current = current.next;
+
+    while (current != null) {
+      let rowHold = current.row;
+      let colHold = current.col;
+      snakeArr[rowHold][colHold] = 0;
+      current.row = newRow;
+      current.col = newCol;
+      snakeArr[newRow][newCol] = 1;
+      newRow = rowHold;
+      newCol = colHold;
+      current = current.next;
+    }
+  }
+  updateGame();
 }
 ```

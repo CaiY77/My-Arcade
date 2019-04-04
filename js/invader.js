@@ -179,7 +179,7 @@ const start = () => {
           boom(all[i]);
           setTimeout(() => {
             all[i].remove();
-          }, 1000);
+          }, 500);
           points += pointArr[i];
           pointArr.splice(i,1);
           score.innerHTML = points;
