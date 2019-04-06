@@ -72,7 +72,9 @@ const start = () => {
 
   document.addEventListener('keydown', key => {
     if (key.keyCode == 32) {
-      fire();
+      if (next) {
+        fire();
+      }
     }
     if (key.keyCode == 37) {
       mvLeft();
@@ -81,7 +83,7 @@ const start = () => {
       mvRight();
     }
   });
-
+  let next = true;
   const stillOnScreen = (location, direction) => {
     if (direction == "left") {
       if (location >= 0) {
@@ -112,8 +114,9 @@ const start = () => {
       ship.style.left = `${currLeft}px`;
     }
   }
-
   const fire = () => {
+    next = false;
+    let rate = 0;
     let bullet = document.createElement('div');
     bullet.className = 'bullet';
     let shipCenterHoriz = currLeft + 45;
@@ -122,8 +125,12 @@ const start = () => {
     bullet.style.top = `${shipCenterVert}px`;
     bullet.style.width = `${size}px`;
     bullet.style.height = `${size}px`;
-
+    setTimeout(() => {
+      next = true;
+    }, 500);
+    
     let bulMove = setInterval(() => {
+      rate++;
       if (body.contains(bullet)) {
         shipCenterVert -= fireSpeed;
 
@@ -133,10 +140,12 @@ const start = () => {
         }
 
         contactWithInvader(bullet, shipCenterVert, shipCenterHoriz);
-        contactWithPower(bullet, shipCenterVert, shipCenterHoriz)
+        contactWithPower(bullet, shipCenterVert, shipCenterHoriz);
 
         bullet.style.top = `${shipCenterVert}px`;
+
       }
+
     }, 100);
 
     body.appendChild(bullet);
@@ -173,6 +182,7 @@ const start = () => {
       }
     }
   }
+
   const boom = (thing) => {
     thing.style.background = "url(../images/invade/boom.gif)";
     thing.style.backgroundSize = 'contain';
@@ -181,16 +191,16 @@ const start = () => {
   const contactWithInvader = (bullet, top, left) => {
     let all = document.getElementsByClassName("invaders");
     for (let i = 0; i < all.length; i++) {
-      if ((left > all[i].offsetLeft) && (left < all[i].offsetLeft + 75)) {
+      if (((left && left + size) > all[i].offsetLeft) && ((left && left + size) < all[i].offsetLeft + 75)) {
         if ((top <= all[i].offsetTop + 75) && (top >= all[i].offsetTop)) {
           bullet.remove();
           boomAudio.play();
           boom(all[i]);
           setTimeout(() => {
             all[i].remove();
-          }, 500);
+          }, 150);
           boomAudio.currentTime = 0;
-          points += pointArr[i];
+          points += 100;
           pointArr.splice(i, 1);
           score.innerHTML = points;
         }
@@ -240,7 +250,6 @@ const start = () => {
     invader.style.background = randomObj.img;
     invader.style.backgroundRepeat = "no-repeat";
     invader.style.backgroundSize = "contain";
-    pointArr.push(randomObj.point);
     let currTop = 0;
 
     let objMove = setInterval(() => {
