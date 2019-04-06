@@ -12,6 +12,8 @@ let currCodes = [];
 let reload = document.getElementById('gameover');
 let swooshAudio = new Audio();
 swooshAudio.src = '../audio/swoosh.mp3';
+let loseAudio = new Audio();
+loseAudio.src = '../audio/lose.mp3';
 
 const makeKeys = () => {
   for (let i = 0; i < letter.length; i++) {
@@ -59,6 +61,7 @@ const start = () => {
       }
     });
 
+
     setInterval(() => {
       randLeft = Math.random() * window.innerWidth + "px";
       randTop = Math.random() * window.innerHeight + "px";
@@ -76,7 +79,17 @@ const start = () => {
 
   }, 333);
 
+  document.addEventListener("keydown", key => {
+    if(!currCodes.includes(key.keyCode)){
+      loseAudio.play();
+      points -= 20;
+      score.innerHTML = points;
+      loseAudio().currentTime = 0;
+    }
+  });
+
 }
+
 
 const randSpawn = (element) => {
   element.style.top = Math.random() * window.innerHeight + "px";
