@@ -62,6 +62,9 @@ let money = document.getElementById('money');
 let confirm = document.getElementById('confirm');
 let outcome = document.getElementById('outcome');
 let winner = document.getElementById('winner');
+let five = document.getElementById('bet500');
+let two = document.getElementById('bet200');
+let one = document.getElementById('bet100');
 let start = 3000;
 let myBet = 0;
 let dealer = [];
@@ -127,6 +130,9 @@ const dealCards = () => {
   bet.style.display = "none";
   hit.style.display = "block";
   stand.style.display = "block";
+  one.style.display = "none";
+  two.style.display = "none";
+  five.style.display = "none";
 
 }
 
@@ -287,6 +293,9 @@ const reset = () => {
   bet.style.display = "block";
   hit.style.display = "none";
   stand.style.display = "none";
+  one.style.display = "block";
+  two.style.display = "block";
+  five.style.display = "block";
 }
 
 const payMe = () => {
