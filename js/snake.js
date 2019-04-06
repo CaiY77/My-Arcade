@@ -172,16 +172,16 @@ const check = (row, col) => {
 }
 
 document.addEventListener('keydown', key => {
-  if (key.keyCode == 37) {
+  if (key.keyCode == 37 || key.keyCode == 65) {
     direction = 'left';
   }
-  if (key.keyCode == 38) {
+  if (key.keyCode == 38 || key.keyCode == 87) {
     direction = 'up';
   }
-  if (key.keyCode == 39) {
+  if (key.keyCode == 39 || key.keyCode == 68) {
     direction = 'right';
   }
-  if (key.keyCode == 40) {
+  if (key.keyCode == 40 || key.keyCode == 83) {
     direction = 'down';
   }
 });
