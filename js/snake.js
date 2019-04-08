@@ -191,8 +191,8 @@ const eat = (row, col) => {
   snakeArr[row][col] = 0;
   mySnake.add(mySnake.findLastRow(), mySnake.findLastCol());
   spawnFood();
-  if (speed > 50) {
-    speed -= 25;
+  if (speed > 40) {
+    speed -= 15;
     clearInterval(movingInterval);
     startMoving(speed);
   }
