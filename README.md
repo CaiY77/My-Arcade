@@ -135,7 +135,7 @@ const contactWithPower = (bullet, top, left) => {
 
 # Snake
 
-The classics sometimes are the best. Throw back to the old snake game that was on almost every cellphone back in the day. This is the recreation of the snake game using HTML, CSS and javascript. Controls to play this game are just the 4 arrow keys, up, down, left, right. Rules follow the original. Food will spawn anywhere on the playing field. Upon consumption of the food, the snake gets longer and the snake moves faster. In the case of self cannibalism or charing head first at the wall, you lose! I took a more object oriented approach by implementing the LinkedList and Nodes concept that is widely used in all languages.
+The classics sometimes are the best. Throw back to the old snake game that was on almost every cellphone back in the day. This is the recreation of the snake game using HTML, CSS and javascript. Controls to play this game are just the 4 arrow keys, up, down, left, right. Rules follow the original. Food will spawn anywhere on the playing field. Upon consumption of the food, the snake gets longer and the snake moves faster. In the case of self cannibalism or charing head first at the wall, you lose! I took a more object oriented approach by implementing the LinkedList and Nodes concept that is widely used in all languages. May not seem like it, but of all four games, this is the crown jewel.
 
 ```javascript
 move(direction) {
