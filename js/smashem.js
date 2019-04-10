@@ -82,7 +82,7 @@ const start = () => {
   document.addEventListener("keydown", key => {
     if(!currCodes.includes(key.keyCode)){
       loseAudio.play();
-      points -= 20;
+      points -= 15;
       score.innerHTML = points;
       loseAudio().currentTime = 0;
     }
